@@ -1,0 +1,29 @@
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>The Gossip Project</title>
+    <style>
+      dt { font-weight: bold}
+      dd { font-style: italic; margin-bottom: 20px}
+    </style>
+  </head>
+  <body>
+    <h1>Bienvenue sur le site des potins de THP</h1>
+    <main>
+      <h2>Les potins&nbsp;:</h2>
+      <div>
+        <% unless gossips.empty? %>
+        <dl> 
+        <% gossips.each do |gossip| %>
+          <dt><%= gossip.author %></dt>
+          <dd><%= gossip.content %> <a href="/gossips/<%= gossip.id %>">Plus d'infos -></a></dd>
+        <% end %>
+        </dl>
+        <% else %>
+        <p>Il n'y a pas de potins pour le moment.</p>
+        <% end %>
+      </div>
+      <p>N'aurais-tu pas un <a href="/gossips/new">potin bien juteux</a> à proposer&nbsp;?</p>
+    </main>
+  </body>
+</html>
