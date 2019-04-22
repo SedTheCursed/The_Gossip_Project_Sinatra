@@ -6,7 +6,7 @@ class Gossip
     @content = props["content"]
     @author = props["author"]
     # Si le gossip n'a pas d'id, il en crée un incrémentant l'id du dernier
-    # Gossip de la BDD, sinon il lui affecte son id comme propriétés @id
+    # Gossip de la BDD, sinon il lui affecte son id comme propriété @id
     unless props["id"]
       file = access_gossips
       @id = file.empty? ? 1 : file[file.length - 1]["id"].to_i + 1
@@ -27,7 +27,6 @@ class Gossip
     file << gossip_json
 
     File.open("db/gossip.json", "w") { |f| f.puts JSON.pretty_generate(file) }
-    return message = "Succes"
   end
 
   def update
@@ -60,7 +59,8 @@ class Gossip
   end
 
   private
-  # Deux fonction recuperant la BDD, l'une pour les méthodes d'instance,
+  
+  # Deux fonctions recuperant la BDD, l'une pour les méthodes d'instance,
   # l'autre pour les methodes de classe
   def access_gossips
     json = File.read("db/gossip.json")

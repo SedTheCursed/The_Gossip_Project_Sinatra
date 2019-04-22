@@ -5,6 +5,7 @@
         <title>Page du potin n°<%= gossip.id %></title>
         <style>
             .label {font-weight: bold}
+            li {list-style-type: none; margin-bottom: 20px}
         </style>
     </head>
 
@@ -16,5 +17,25 @@
 
         <a href="/gossips/<%= gossip.id%>/edit"><button type="button">Editer le potin</button></a>
         <p><a href="/"><- revenir à la page des potins<a></p>
+        <div>
+            <h2>Commentaires</h2>
+            <!-- A moins qu'il n'y ai pas de commentaires liés à ce potin, on les affiches un par un. -->
+            <% unless comments.empty?%>
+            <ul>
+                <%comments.each do |comment| %>
+                <li><%= comment.content %></li>
+                <% end %>
+            </ul>
+            <% else %>
+            <p>Il n'y a pas de commentaires pour ce potin</p>
+            <% end %>
+            <!-- Formulaire de création de commentaire -->
+            <form action='/gossips/<%= gossip.id %>' method='POST'>
+                <label for="content">Ajouter un commentaire</label>&nbsp;
+                <input type='text' id="content" name='content' /><br/>
+                <input type="hidden" name='gossip_id' value='<%= gossip.id%>'>
+                <input type='submit'/>
+            </form>
+        </div>
     </body>
 </html>

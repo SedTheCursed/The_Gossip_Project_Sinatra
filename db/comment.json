@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Veinard !",
+    "comment_id": 1,
+    "gossip_id": "1"
+  },
+  {
+    "content": "Pourquoi Tonton Jesus",
+    "comment_id": 2,
+    "gossip_id": "1"
+  },
+  {
+    "content": "Best dessert ever !",
+    "comment_id": 3,
+    "gossip_id": "2"
+  },
+  {
+    "content": "Je n'aime pas le citron",
+    "comment_id": 4,
+    "gossip_id": 2
+  }
+]

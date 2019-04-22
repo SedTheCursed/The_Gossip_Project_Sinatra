@@ -1,4 +1,5 @@
-require "gossip"
+require "models/gossip"
+require "models/comment"
 
 class ApplicationController < Sinatra::Base
   # Affiche tous les potin en page d'accueil
@@ -17,9 +18,16 @@ class ApplicationController < Sinatra::Base
     redirect '/'
   end
 
-  # Affiche un potin d'après son id
+  # Affiche un potin et les commentaires liés d'après son id
   get '/gossips/:id' do
-    erb :show, locals: {gossip: Gossip.find(params["id"])}
+    erb :show, locals: {gossip: Gossip.find(params["id"]), comments: Comment.find_by_gossip(params["id"])}
+  end
+
+  # Enregistre un nouveau commentaire et affiche la page du potin auquel 
+  # il est lié.
+  post '/gossips/:id' do
+    Comment.new(params).save
+    redirect "/gossips/#{params["id"]}"
   end
 
   # Affichage du formulaire de modification d'un potin
