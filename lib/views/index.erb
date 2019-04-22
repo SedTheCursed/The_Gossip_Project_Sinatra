@@ -12,6 +12,7 @@
     <main>
       <h2>Les potins&nbsp;:</h2>
       <div>
+      <!--A moins que la BDD soit vide, on affiche chaque potin contenu dans la BDD -->
         <% unless gossips.empty? %>
         <dl> 
         <% gossips.each do |gossip| %>

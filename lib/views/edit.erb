@@ -6,6 +6,7 @@
   </head>
   <body>
     <h1>Mettre à jour le potin n°<%= gossip.id %></h1>
+    <!-- Ajout des valeurs actuelles comme valeurs des inputs -->
     <form action='/gossips/<%= gossip.id %>/edit' method='POST'>
       Auteur du potin :  <input type='text' name='author' value="<%= gossip.author %>" /><br/>
       Texte du potin : <input type='text' name='content' value="<%= gossip.content %>" /><br/>
